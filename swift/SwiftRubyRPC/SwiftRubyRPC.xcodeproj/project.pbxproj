@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B3ABFE311F2E86B4001DBF83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE301F2E86B4001DBF83 /* AppDelegate.swift */; };
+		B3ABFE331F2E86B4001DBF83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE321F2E86B4001DBF83 /* ViewController.swift */; };
+		B3ABFE351F2E86B4001DBF83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3ABFE341F2E86B4001DBF83 /* Assets.xcassets */; };
+		B3ABFE381F2E86B4001DBF83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3ABFE361F2E86B4001DBF83 /* Main.storyboard */; };
+		B3ABFE431F2E86B4001DBF83 /* SwiftRubyRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE421F2E86B4001DBF83 /* SwiftRubyRPCTests.swift */; };
+		B3ABFE511F2E86C7001DBF83 /* SocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */; };
+		B3ABFE531F2E86C7001DBF83 /* SocketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE4E1F2E86C7001DBF83 /* SocketResponse.swift */; };
+		D52785061F35311A00770098 /* SocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */; };
+		D52785091F35311A00770098 /* SocketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE4E1F2E86C7001DBF83 /* SocketResponse.swift */; };
+		D527850C1F35375100770098 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527850B1F35375100770098 /* EnvironmentVariables.swift */; };
+		D527850D1F35375100770098 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527850B1F35375100770098 /* EnvironmentVariables.swift */; };
+		D527850F1F353CAF00770098 /* RubyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527850E1F353CAF00770098 /* RubyCommand.swift */; };
+		D52785101F353CAF00770098 /* RubyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527850E1F353CAF00770098 /* RubyCommand.swift */; };
+		D52785121F353D2000770098 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52785111F353D2000770098 /* Commands.swift */; };
+		D52785131F353D2000770098 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52785111F353D2000770098 /* Commands.swift */; };
+		D52785151F353D4200770098 /* CommandFileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52785141F353D4200770098 /* CommandFileProtocol.swift */; };
+		D52785161F353D4200770098 /* CommandFileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52785141F353D4200770098 /* CommandFileProtocol.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B3ABFE3F1F2E86B4001DBF83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3ABFE251F2E86B4001DBF83 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3ABFE2C1F2E86B4001DBF83;
+			remoteInfo = SwiftRubyRPC;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B3ABFE2D1F2E86B4001DBF83 /* SwiftRubyRPC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftRubyRPC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3ABFE301F2E86B4001DBF83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B3ABFE321F2E86B4001DBF83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3ABFE341F2E86B4001DBF83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B3ABFE371F2E86B4001DBF83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B3ABFE391F2E86B4001DBF83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3ABFE3E1F2E86B4001DBF83 /* SwiftRubyRPCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftRubyRPCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3ABFE421F2E86B4001DBF83 /* SwiftRubyRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftRubyRPCTests.swift; sourceTree = "<group>"; };
+		B3ABFE441F2E86B4001DBF83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClient.swift; sourceTree = "<group>"; };
+		B3ABFE4E1F2E86C7001DBF83 /* SocketResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketResponse.swift; sourceTree = "<group>"; };
+		D527850B1F35375100770098 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
+		D527850E1F353CAF00770098 /* RubyCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyCommand.swift; sourceTree = "<group>"; };
+		D52785111F353D2000770098 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
+		D52785141F353D4200770098 /* CommandFileProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandFileProtocol.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B3ABFE2A1F2E86B4001DBF83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABFE3B1F2E86B4001DBF83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B3ABFE241F2E86B4001DBF83 = {
+			isa = PBXGroup;
+			children = (
+				B3ABFE2F1F2E86B4001DBF83 /* SwiftRubyRPC */,
+				B3ABFE411F2E86B4001DBF83 /* SwiftRubyRPCTests */,
+				B3ABFE2E1F2E86B4001DBF83 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B3ABFE2E1F2E86B4001DBF83 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABFE2D1F2E86B4001DBF83 /* SwiftRubyRPC.app */,
+				B3ABFE3E1F2E86B4001DBF83 /* SwiftRubyRPCTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3ABFE2F1F2E86B4001DBF83 /* SwiftRubyRPC */ = {
+			isa = PBXGroup;
+			children = (
+				D52785011F351F2300770098 /* Auxiliary */,
+				B3ABFE301F2E86B4001DBF83 /* AppDelegate.swift */,
+				D52785141F353D4200770098 /* CommandFileProtocol.swift */,
+				D52785111F353D2000770098 /* Commands.swift */,
+				D527850B1F35375100770098 /* EnvironmentVariables.swift */,
+				D527850E1F353CAF00770098 /* RubyCommand.swift */,
+				B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */,
+				B3ABFE4E1F2E86C7001DBF83 /* SocketResponse.swift */,
+				B3ABFE321F2E86B4001DBF83 /* ViewController.swift */,
+			);
+			path = SwiftRubyRPC;
+			sourceTree = "<group>";
+		};
+		B3ABFE411F2E86B4001DBF83 /* SwiftRubyRPCTests */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABFE421F2E86B4001DBF83 /* SwiftRubyRPCTests.swift */,
+				B3ABFE441F2E86B4001DBF83 /* Info.plist */,
+			);
+			path = SwiftRubyRPCTests;
+			sourceTree = "<group>";
+		};
+		D52785011F351F2300770098 /* Auxiliary */ = {
+			isa = PBXGroup;
+			children = (
+				B3ABFE341F2E86B4001DBF83 /* Assets.xcassets */,
+				B3ABFE391F2E86B4001DBF83 /* Info.plist */,
+				B3ABFE361F2E86B4001DBF83 /* Main.storyboard */,
+			);
+			name = Auxiliary;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B3ABFE2C1F2E86B4001DBF83 /* SwiftRubyRPC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3ABFE471F2E86B4001DBF83 /* Build configuration list for PBXNativeTarget "SwiftRubyRPC" */;
+			buildPhases = (
+				B3ABFE291F2E86B4001DBF83 /* Sources */,
+				B3ABFE2A1F2E86B4001DBF83 /* Frameworks */,
+				B3ABFE2B1F2E86B4001DBF83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftRubyRPC;
+			productName = SwiftRubyRPC;
+			productReference = B3ABFE2D1F2E86B4001DBF83 /* SwiftRubyRPC.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B3ABFE3D1F2E86B4001DBF83 /* SwiftRubyRPCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3ABFE4A1F2E86B4001DBF83 /* Build configuration list for PBXNativeTarget "SwiftRubyRPCTests" */;
+			buildPhases = (
+				B3ABFE3A1F2E86B4001DBF83 /* Sources */,
+				B3ABFE3B1F2E86B4001DBF83 /* Frameworks */,
+				B3ABFE3C1F2E86B4001DBF83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B3ABFE401F2E86B4001DBF83 /* PBXTargetDependency */,
+			);
+			name = SwiftRubyRPCTests;
+			productName = SwiftRubyRPCTests;
+			productReference = B3ABFE3E1F2E86B4001DBF83 /* SwiftRubyRPCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B3ABFE251F2E86B4001DBF83 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Joshua Liebowitz";
+				TargetAttributes = {
+					B3ABFE2C1F2E86B4001DBF83 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					B3ABFE3D1F2E86B4001DBF83 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B3ABFE2C1F2E86B4001DBF83;
+					};
+				};
+			};
+			buildConfigurationList = B3ABFE281F2E86B4001DBF83 /* Build configuration list for PBXProject "SwiftRubyRPC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B3ABFE241F2E86B4001DBF83;
+			productRefGroup = B3ABFE2E1F2E86B4001DBF83 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3ABFE2C1F2E86B4001DBF83 /* SwiftRubyRPC */,
+				B3ABFE3D1F2E86B4001DBF83 /* SwiftRubyRPCTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3ABFE2B1F2E86B4001DBF83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3ABFE351F2E86B4001DBF83 /* Assets.xcassets in Resources */,
+				B3ABFE381F2E86B4001DBF83 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABFE3C1F2E86B4001DBF83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3ABFE291F2E86B4001DBF83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D527850F1F353CAF00770098 /* RubyCommand.swift in Sources */,
+				B3ABFE531F2E86C7001DBF83 /* SocketResponse.swift in Sources */,
+				D52785151F353D4200770098 /* CommandFileProtocol.swift in Sources */,
+				D52785121F353D2000770098 /* Commands.swift in Sources */,
+				D527850C1F35375100770098 /* EnvironmentVariables.swift in Sources */,
+				B3ABFE331F2E86B4001DBF83 /* ViewController.swift in Sources */,
+				B3ABFE311F2E86B4001DBF83 /* AppDelegate.swift in Sources */,
+				B3ABFE511F2E86C7001DBF83 /* SocketClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3ABFE3A1F2E86B4001DBF83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3ABFE431F2E86B4001DBF83 /* SwiftRubyRPCTests.swift in Sources */,
+				D52785131F353D2000770098 /* Commands.swift in Sources */,
+				D527850D1F35375100770098 /* EnvironmentVariables.swift in Sources */,
+				D52785091F35311A00770098 /* SocketResponse.swift in Sources */,
+				D52785061F35311A00770098 /* SocketClient.swift in Sources */,
+				D52785101F353CAF00770098 /* RubyCommand.swift in Sources */,
+				D52785161F353D4200770098 /* CommandFileProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B3ABFE401F2E86B4001DBF83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3ABFE2C1F2E86B4001DBF83 /* SwiftRubyRPC */;
+			targetProxy = B3ABFE3F1F2E86B4001DBF83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B3ABFE361F2E86B4001DBF83 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3ABFE371F2E86B4001DBF83 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B3ABFE451F2E86B4001DBF83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B3ABFE461F2E86B4001DBF83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		B3ABFE481F2E86B4001DBF83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SwiftRubyRPC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mydoghatestechnology.SwiftRubyRPC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		B3ABFE491F2E86B4001DBF83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SwiftRubyRPC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mydoghatestechnology.SwiftRubyRPC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		B3ABFE4B1F2E86B4001DBF83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SwiftRubyRPCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mydoghatestechnology.SwiftRubyRPCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftRubyRPC.app/Contents/MacOS/SwiftRubyRPC";
+			};
+			name = Debug;
+		};
+		B3ABFE4C1F2E86B4001DBF83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = SwiftRubyRPCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mydoghatestechnology.SwiftRubyRPCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftRubyRPC.app/Contents/MacOS/SwiftRubyRPC";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3ABFE281F2E86B4001DBF83 /* Build configuration list for PBXProject "SwiftRubyRPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3ABFE451F2E86B4001DBF83 /* Debug */,
+				B3ABFE461F2E86B4001DBF83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3ABFE471F2E86B4001DBF83 /* Build configuration list for PBXNativeTarget "SwiftRubyRPC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3ABFE481F2E86B4001DBF83 /* Debug */,
+				B3ABFE491F2E86B4001DBF83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3ABFE4A1F2E86B4001DBF83 /* Build configuration list for PBXNativeTarget "SwiftRubyRPCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3ABFE4B1F2E86B4001DBF83 /* Debug */,
+				B3ABFE4C1F2E86B4001DBF83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B3ABFE251F2E86B4001DBF83 /* Project object */;
+}
