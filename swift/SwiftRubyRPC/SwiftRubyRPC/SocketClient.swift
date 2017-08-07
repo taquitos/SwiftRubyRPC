@@ -71,7 +71,7 @@ class SocketClient: NSObject {
         let connectTimeout = DispatchTime.now() + DispatchTimeInterval.seconds(SocketClient.connectTimeoutSeconds)
         let timeoutResult = self.dispatchGroup.wait(timeout: connectTimeout)
 
-        testDispatchTimeoutResult(timeoutResult, failureMessage: "Couldn't connect to Ruby process within: \(SocketClient.connectTimeoutSeconds) seconds")
+        testDispatchTimeoutResult(timeoutResult, failureMessage: "Couldn't connect to ruby process within: \(SocketClient.connectTimeoutSeconds) seconds")
         sleep(1) // just to ensure we are actually running in a different thread
         self.socketStatus = .ready
         print("done opening, ready to send and receive")
@@ -135,11 +135,10 @@ class SocketClient: NSObject {
 
     func sendAbort() {
         self.socketStatus = .closed
-        // and error occured, let's try to send an abort
-        // disconnect delegates
-//        self.inputStream.delegate = nil
+
         stopInputSession()
 
+        // and error occured, let's try to send the "done" message
         send(string: "done")
 
         stopOutputSession()
@@ -169,10 +168,12 @@ extension SocketClient: StreamDelegate {
                 read()
 
             case Stream.Event.endEncountered:
-                print("end encountered, stopping")
+                // nothing special here
+                break
 
             case Stream.Event.hasSpaceAvailable:
-                print("has space available")
+                // we don't care about this
+                break
 
             default:
                 print("input stream caused unrecognized event: \(eventCode)")
@@ -188,14 +189,15 @@ extension SocketClient: StreamDelegate {
                 // safe to close all the things because Ruby already disconnected
 
             case Stream.Event.endEncountered:
-                print("end occurred, this is expected at start")
+                // nothing special here
+                break
 
             case Stream.Event.hasSpaceAvailable:
-                print("has space available")
+                // we don't care about this
+                break
 
             default:
                 print("output stream caused unrecognized event: \(eventCode)")
-
             }
         }
     }
@@ -222,7 +224,7 @@ extension SocketClient: StreamDelegate {
 
     func processResponse(string: String) {
         guard string.characters.count > 0 else {
-            self.handleFailure(message: "empty response from Ruby process")
+            self.handleFailure(message: "empty response from ruby process")
             return
         }
 
