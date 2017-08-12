@@ -7,7 +7,7 @@ module SwiftRubyRPC
         command_id = command.command_id
         method_name = command.method_name
         args = command.args
-        print "executing command with identifier #{command_id}\nmethod: #{method_name}\nargs: #{args}\n"
+        print "executing command with identifier: #{command_id || 'none'}\nmethod: #{method_name}\nargs: #{args}\n"
 
         transformed_arg_list = []
         args.each do |arg|

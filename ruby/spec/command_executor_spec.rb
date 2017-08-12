@@ -8,7 +8,7 @@ module SwiftRubyRPC
       it "successfully executes a command with one non-named parameter" do
         target_object = SomeTestClass.new
         command_json = '{
-          "commandId" : "ID",
+          "commandId" : "fakeID",
           "args" : [{ "value" : "expected return" }],
           "methodName" : "something_one_arg"
         }'
@@ -21,7 +21,7 @@ module SwiftRubyRPC
       it "successfully executes a command with one named parameter" do
         target_object = SomeTestClass.new
         command_json = '{
-          "name" : "ID",
+          "name" : "fakeID",
           "args" : [{ "value" : "expected return", "name" : "text" }],
           "methodName" : "something_one_arg_named"
         }'
@@ -29,6 +29,19 @@ module SwiftRubyRPC
         command = Command.new(json: command_json)
         output = CommandExecutor.execute(command: command, target_object: target_object)
         expect(output).to eq("expected return")
+      end
+
+      it "successfully executes a command with one unnamed parameter and one named parameter" do
+        target_object = SomeTestClass.new
+        command_json = '{
+          "name" : "fakeID",
+          "args" : [{ "value" : "my " }, { "value" : "expected return", "name" : "text" }],
+          "methodName" : "two_args_one_named"
+        }'
+
+        command = Command.new(json: command_json)
+        output = CommandExecutor.execute(command: command, target_object: target_object)
+        expect(output).to eq("my expected return")
       end
     end
   end

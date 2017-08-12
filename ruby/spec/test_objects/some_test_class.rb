@@ -12,6 +12,10 @@ class SomeTestClass
     return text
   end
 
+  def two_args_one_named(tacos, text: nil)
+    return tacos + text
+  end
+
   def self.class_something_no_args
     return "class something no args"
   end
