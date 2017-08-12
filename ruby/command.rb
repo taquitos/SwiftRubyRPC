@@ -26,18 +26,33 @@ module SwiftRubyRPC
   class Command
     def initialize(json: nil)
       command_json = JSON.parse(json)
-      @command_identifier = command_json['commandId']
       @method_name = command_json['methodName']
+      @class_name = command_json['className']
       @command_id = command_json['commandId']
 
-      args_json = command_json['args']
+      args_json = command_json['args'] ||= []
       @args = args_json.map do |arg|
         Argument.new(json: arg)
       end
     end
 
-    attr_reader :command_id
-    attr_reader :args
-    attr_reader :method_name
+    def target_class
+      unless class_name
+        return nil
+      end
+
+      # rubocop:disable Security/Eval
+      return eval(class_name)
+      # rubocop:enable Security/Eval
+    end
+
+    def is_class_method_command
+      return class_name.to_s.length > 0
+    end
+
+    attr_reader :command_id # always present
+    attr_reader :args # always present
+    attr_reader :method_name # always present
+    attr_reader :class_name # only present when executing a class-method
   end
 end

@@ -21,6 +21,10 @@ class SomeTestClass
   end
 
   def self.class_something_one_arg(text = nil)
-    return text
+    return "class " + text
+  end
+
+  def self.class_two_args_one_named(tacos, text: nil)
+    return "class " + tacos + text
   end
 end
