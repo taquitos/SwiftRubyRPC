@@ -1,4 +1,5 @@
 require './command.rb'
+require './command_executor.rb'
 require 'socket'
 
 module SwiftRubyRPC
@@ -31,7 +32,7 @@ module SwiftRubyRPC
       print "[#{time.usec}] :received command:#{command_json}\n"
       command = Command.new(json: command_json)
 
-      execute_command(command: command)
+      return execute_command(command: command)
     end
 
     def execute_command(command: nil)
@@ -39,7 +40,7 @@ module SwiftRubyRPC
       print "[#{time.usec}] :parsed command name:#{command.name}\n"
       sleep(0.005)
       output = '{"payload":{"status": "ready_for_next"}}'
-      output
+      return output
     end
   end
 end
@@ -47,5 +48,3 @@ end
 server = SwiftRubyRPC::Server.new
 
 server.start
-
-# client.puts('{"payload":{"status": "failure", "failure_information": "your code is bad and you should feel bad"}}') # Send some json to the client

@@ -81,14 +81,14 @@ Lint/UselessAssignment:
     - '**/spec/**/*'
 
 # We could potentially enable the 2 below:
-Layout/IndentHash:
+Style/IndentHash:
   Enabled: false
 
-Layout/AlignHash:
+Style/AlignHash:
   Enabled: false
 
 # HoundCI doesn't like this rule
-Layout/DotPosition:
+Style/DotPosition:
   Enabled: false
 
 # We allow !! as it's an easy way to convert ot boolean
@@ -100,7 +100,7 @@ Style/SymbolArray:
   Enabled: false
 
 # We still support Ruby 2.0.0
-Layout/IndentHeredoc:
+Style/IndentHeredoc:
   Enabled: false
 
 # This cop would not work fine with rspec
