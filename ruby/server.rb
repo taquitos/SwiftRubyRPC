@@ -37,7 +37,7 @@ module SwiftRubyRPC
 
     def execute_command(command: nil)
       time = Time.new
-      print "[#{time.usec}] :parsed command name:#{command.name}\n"
+      print "[#{time.usec}] :parsed command method_name:#{command.method_name}\n"
       sleep(0.005)
       output = '{"payload":{"status": "ready_for_next"}}'
       return output

@@ -14,6 +14,8 @@
 		B3ABFE431F2E86B4001DBF83 /* SwiftRubyRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE421F2E86B4001DBF83 /* SwiftRubyRPCTests.swift */; };
 		B3ABFE511F2E86C7001DBF83 /* SocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */; };
 		B3ABFE531F2E86C7001DBF83 /* SocketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE4E1F2E86C7001DBF83 /* SocketResponse.swift */; };
+		B3FD258A1F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FD25891F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift */; };
+		B3FD258B1F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FD25891F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift */; };
 		D52785061F35311A00770098 /* SocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */; };
 		D52785091F35311A00770098 /* SocketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3ABFE4E1F2E86C7001DBF83 /* SocketResponse.swift */; };
 		D527850C1F35375100770098 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527850B1F35375100770098 /* EnvironmentVariables.swift */; };
@@ -48,6 +50,7 @@
 		B3ABFE441F2E86B4001DBF83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClient.swift; sourceTree = "<group>"; };
 		B3ABFE4E1F2E86C7001DBF83 /* SocketResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketResponse.swift; sourceTree = "<group>"; };
+		B3FD25891F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketClientDelegateProtocol.swift; sourceTree = "<group>"; };
 		D527850B1F35375100770098 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
 		D527850E1F353CAF00770098 /* RubyCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyCommand.swift; sourceTree = "<group>"; };
 		D52785111F353D2000770098 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 				D527850B1F35375100770098 /* EnvironmentVariables.swift */,
 				D527850E1F353CAF00770098 /* RubyCommand.swift */,
 				B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */,
+				B3FD25891F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift */,
 				B3ABFE4E1F2E86C7001DBF83 /* SocketResponse.swift */,
 				B3ABFE321F2E86B4001DBF83 /* ViewController.swift */,
 			);
@@ -229,6 +233,7 @@
 			files = (
 				D527850F1F353CAF00770098 /* RubyCommand.swift in Sources */,
 				B3ABFE531F2E86C7001DBF83 /* SocketResponse.swift in Sources */,
+				B3FD258A1F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift in Sources */,
 				D52785151F353D4200770098 /* CommandFileProtocol.swift in Sources */,
 				D52785121F353D2000770098 /* Commands.swift in Sources */,
 				D527850C1F35375100770098 /* EnvironmentVariables.swift in Sources */,
@@ -244,6 +249,7 @@
 			files = (
 				B3ABFE431F2E86B4001DBF83 /* SwiftRubyRPCTests.swift in Sources */,
 				D52785131F353D2000770098 /* Commands.swift in Sources */,
+				B3FD258B1F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift in Sources */,
 				D527850D1F35375100770098 /* EnvironmentVariables.swift in Sources */,
 				D52785091F35311A00770098 /* SocketResponse.swift in Sources */,
 				D52785061F35311A00770098 /* SocketClient.swift in Sources */,

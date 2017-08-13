@@ -8,6 +8,15 @@
 
 import Foundation
 
+public enum SocketClientError: Error {
+    case alreadyClosedSockets
+    case malformedRequest
+    case malformedResponse
+    case serverError
+    case commandTimeout(seconds: Int)
+    case connectionFailure
+}
+
 class SocketClient: NSObject {
 
     enum SocketStatus {
@@ -31,13 +40,16 @@ class SocketClient: NSObject {
     // TODO: change it to something reasonable. Keeping it at 1 to test
     let maxReadLength = 1 // max for ipc on 10.12 is kern.ipc.maxsockbuf: 8388608 ($sysctl kern.ipc.maxsockbuf)
 
+    weak private(set) var socketDelegate: SocketClientDelegateProtocol?
+
     public private(set) var socketStatus: SocketStatus
 
-    init(host: String = "localhost", port: UInt32 = 2000) {
+    init(host: String = "localhost", port: UInt32 = 2000, socketDelegate: SocketClientDelegateProtocol) {
         self.host = host
         self.port = port
         self.streamQueue = DispatchQueue(label: "streamQueue")
         self.socketStatus = .closed
+        self.socketDelegate = socketDelegate
         super.init()
     }
 
@@ -68,13 +80,19 @@ class SocketClient: NSObject {
             self.outputStream.open()
         }
 
-        let connectTimeout = DispatchTime.now() + DispatchTimeInterval.seconds(SocketClient.connectTimeoutSeconds)
+        let secondsToWait = DispatchTimeInterval.seconds(SocketClient.connectTimeoutSeconds)
+        let connectTimeout = DispatchTime.now() + secondsToWait
         let timeoutResult = self.dispatchGroup.wait(timeout: connectTimeout)
+        let failureMessage = "Couldn't connect to ruby process within: \(SocketClient.connectTimeoutSeconds) seconds"
+        let success = testDispatchTimeoutResult(timeoutResult, failureMessage: failureMessage, timeToWait: secondsToWait)
 
-        testDispatchTimeoutResult(timeoutResult, failureMessage: "Couldn't connect to ruby process within: \(SocketClient.connectTimeoutSeconds) seconds")
-        sleep(1) // just to ensure we are actually running in a different thread
+        guard success else {
+            self.socketDelegate?.commandExecuted(error: .connectionFailure)
+            return
+        }
+
         self.socketStatus = .ready
-        print("done opening, ready to send and receive")
+        self.socketDelegate?.connectionsOpened()
     }
 
     public func send(environmentVariables: EnvironmentVariables) {
@@ -89,13 +107,17 @@ class SocketClient: NSObject {
         sendAbort()
     }
 
-    private func testDispatchTimeoutResult(_ timeoutResult: DispatchTimeoutResult, failureMessage: String) {
+    private func testDispatchTimeoutResult(_ timeoutResult: DispatchTimeoutResult, failureMessage: String, timeToWait: DispatchTimeInterval) -> Bool {
         switch timeoutResult {
         case .success:
-            break
+            return true
         case .timedOut:
             print("Timeout: \(failureMessage)")
-            fatalError()
+
+            if case .seconds(let seconds) = timeToWait {
+                socketDelegate?.commandExecuted(error: .commandTimeout(seconds: seconds))
+            }
+            return false
         }
     }
 
@@ -111,7 +133,8 @@ class SocketClient: NSObject {
         guard !self.cleaningUpAfterDone else {
             // This will happen after we abort if there are commands waiting to be executed
             // Need to check state of SocketClient in command runner to make sure we can accept `send`
-            fatalError("Attempt to send command: \(string)\nafter we already told the ruby server we were done.")
+            socketDelegate?.commandExecuted(error: .alreadyClosedSockets)
+            return
         }
 
         if string == SocketClient.doneToken {
@@ -124,12 +147,13 @@ class SocketClient: NSObject {
             _ = data.withUnsafeBytes { self.outputStream.write($0, maxLength: data.count) }
         }
 
-        let commandTimeout = DispatchTime.now() + DispatchTimeInterval.seconds(SocketClient.commandTimeoutSeconds)
+        let timeToWait = DispatchTimeInterval.seconds(SocketClient.commandTimeoutSeconds)
+        let commandTimeout = DispatchTime.now() + timeToWait
         let timeoutResult =  self.dispatchGroup.wait(timeout: commandTimeout)
 
         if !self.cleaningUpAfterDone {
             // only wait if we aren't cleaning up, otherwise, we're in the process of exiting anyway
-            testDispatchTimeoutResult(timeoutResult, failureMessage: "Ruby process didn't return after: \(SocketClient.connectTimeoutSeconds) seconds")
+            testDispatchTimeoutResult(timeoutResult, failureMessage: "Ruby process didn't return after: \(SocketClient.connectTimeoutSeconds) seconds", timeToWait: timeToWait)
         }
     }
 
@@ -142,6 +166,7 @@ class SocketClient: NSObject {
         send(string: "done")
 
         stopOutputSession()
+        self.socketDelegate?.connectionsClosed()
     }
 }
 
@@ -205,7 +230,7 @@ extension SocketClient: StreamDelegate {
     func read() {
         var buffer = [UInt8](repeating: 0, count: maxReadLength)
         var output = ""
-        while (self.inputStream!.hasBytesAvailable) {
+        while self.inputStream!.hasBytesAvailable {
             let bytesRead: Int = inputStream!.read(&buffer, maxLength: buffer.count)
             if bytesRead >= 0 {
                 output += NSString(bytes: UnsafePointer(buffer), length: bytesRead, encoding: String.Encoding.utf8.rawValue)! as String
@@ -233,6 +258,7 @@ extension SocketClient: StreamDelegate {
             guard messages == 0 else {
                 print("Received too many messages, something is wrong, please file an issue!")
                 print("Received: \(string)")
+                self.socketDelegate?.commandExecuted(error: .malformedResponse)
                 self.sendAbort()
                 return
             }
@@ -242,12 +268,15 @@ extension SocketClient: StreamDelegate {
 
             switch socketResponse.responseType {
             case .failure(let failureInformation):
+                self.socketDelegate?.commandExecuted(error: .serverError)
                 self.handleFailure(message: failureInformation)
 
             case .parseFailure(let failureInformation):
+                self.socketDelegate?.commandExecuted(error: .malformedResponse)
                 self.handleFailure(message: failureInformation)
 
             case .readyForNext:
+                self.socketDelegate?.commandExecuted(error: nil)
                 // cool, ready for next command
                 break
             }
