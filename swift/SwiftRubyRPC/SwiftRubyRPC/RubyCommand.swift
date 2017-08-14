@@ -8,25 +8,43 @@
 
 import Foundation
 
-struct RubyCommand {
-    let name: String
-    let json: String
+protocol RubyCommandable {
+    var json: String { get }
+}
 
-//    init(name: String, json: String) {
-//        self.name = name
-//        self.json = json
-//    }
+struct RubyCommand: RubyCommandable {
+    struct Argument {
+        let name: String
+        let value: String
 
-//    var json: String {
-//
-//        return "{\"name\": \"\(self.name)\"}"
-//        do {
-//            let jsonData = try JSONSerialization.data(withJSONObject: self)
-//            let jsonString = NSString(data: jsonData, encoding: String.Encoding.utf8.rawValue)!
-//            return jsonString as String
-//        } catch {
-//            print("Unable to parse ruby command: \(error.localizedDescription)")
-//            fatalError()
-//        }
-//    }
+        var json: String {
+            get {
+                return "{\"name\" : \"\(name)\", \"value\" : \"\(value)\"}"
+            }
+        }
+    }
+
+    let commandID: String
+    let methodName: String
+    let className: String?
+    let args: [Argument]
+
+    var json: String {
+        let argsArrayJson = self.args.map { $0.json }
+        let argsJson = "[\(argsArrayJson.joined(separator: ","))]"
+
+        let commandIDJson = "\"commandID\" : \"\(commandID)\""
+        let methodNameJson = "\"methodName\" : \"\(methodName)\""
+
+        var jsonParts = [commandIDJson, methodNameJson, argsJson]
+
+        if let className = className {
+            let classNameJson = "\"className\" : \"\(className)\""
+            jsonParts.append(classNameJson)
+        }
+
+        let commandJsonString = "{\(jsonParts.joined(separator: ","))}"
+
+        return commandJsonString
+    }
 }

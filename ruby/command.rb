@@ -28,7 +28,7 @@ module SwiftRubyRPC
       command_json = JSON.parse(json)
       @method_name = command_json['methodName']
       @class_name = command_json['className']
-      @command_id = command_json['commandId']
+      @command_id = command_json['commandID']
 
       args_json = command_json['args'] ||= []
       @args = args_json.map do |arg|

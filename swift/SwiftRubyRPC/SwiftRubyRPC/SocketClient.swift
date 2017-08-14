@@ -99,7 +99,7 @@ class SocketClient: NSObject {
         send(string: environmentVariables.json)
     }
 
-    public func send(rubyCommand: RubyCommand) {
+    public func send(rubyCommand: RubyCommandable) {
         send(string: rubyCommand.json)
     }
 
@@ -153,7 +153,7 @@ class SocketClient: NSObject {
 
         if !self.cleaningUpAfterDone {
             // only wait if we aren't cleaning up, otherwise, we're in the process of exiting anyway
-            testDispatchTimeoutResult(timeoutResult, failureMessage: "Ruby process didn't return after: \(SocketClient.connectTimeoutSeconds) seconds", timeToWait: timeToWait)
+            _ = testDispatchTimeoutResult(timeoutResult, failureMessage: "Ruby process didn't return after: \(SocketClient.connectTimeoutSeconds) seconds", timeToWait: timeToWait)
         }
     }
 
