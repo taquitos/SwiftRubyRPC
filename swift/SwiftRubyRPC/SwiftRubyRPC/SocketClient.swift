@@ -242,44 +242,34 @@ extension SocketClient: StreamDelegate {
         processResponse(string: output)
     }
 
-    func handleFailure(message: String) {
-        print("Ruby process encountered a problem:\(message)")
+    func handleFailure(message: [String]) {
+        print("Ruby process encountered a problem: \(message.joined(separator:"\n"))")
         sendAbort()
     }
 
     func processResponse(string: String) {
         guard string.characters.count > 0 else {
-            self.handleFailure(message: "empty response from ruby process")
+            self.handleFailure(message: ["empty response from ruby process"])
             return
         }
 
-        var messages = 0
-        string.enumerateLines { (messageString, _) in
-            guard messages == 0 else {
-                print("Received too many messages, something is wrong, please file an issue!")
-                print("Received: \(string)")
-                self.socketDelegate?.commandExecuted(error: .malformedResponse)
-                self.sendAbort()
-                return
-            }
+        let responseString = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        let socketResponse = SocketResponse(payload: responseString)
+        print("\(responseString)")
+        switch socketResponse.responseType {
+        case .failure(let failureInformation):
+            self.socketDelegate?.commandExecuted(error: .serverError)
+            self.handleFailure(message: failureInformation)
 
-            messages += 1
-            let socketResponse = SocketResponse(payload: messageString)
+        case .parseFailure(let failureInformation):
+            self.socketDelegate?.commandExecuted(error: .malformedResponse)
+            self.handleFailure(message: failureInformation)
 
-            switch socketResponse.responseType {
-            case .failure(let failureInformation):
-                self.socketDelegate?.commandExecuted(error: .serverError)
-                self.handleFailure(message: failureInformation)
+        case .readyForNext:
+            self.socketDelegate?.commandExecuted(error: nil)
+            // cool, ready for next command
+            break
 
-            case .parseFailure(let failureInformation):
-                self.socketDelegate?.commandExecuted(error: .malformedResponse)
-                self.handleFailure(message: failureInformation)
-
-            case .readyForNext:
-                self.socketDelegate?.commandExecuted(error: nil)
-                // cool, ready for next command
-                break
-            }
         }
         self.dispatchGroup.leave() // should now pull the next piece of work
     }

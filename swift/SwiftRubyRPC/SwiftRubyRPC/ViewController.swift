@@ -43,7 +43,6 @@ class ViewController: NSViewController {
         self.inputTextView.isEditable = false
 
         let command = buildCommand()
-
         DispatchQueue.global(qos: .userInitiated).async {
             socketClient.send(rubyCommand: command)
         }
@@ -56,7 +55,6 @@ class ViewController: NSViewController {
             DispatchQueue.global(qos: .userInitiated).async {
                 self.socketClient?.sendComplete()
             }
-
         } else {
             log(message: "connecting")
             prepareUI(state: .connecting)
@@ -109,7 +107,6 @@ class ViewController: NSViewController {
             self.connectButton.isEnabled = false
             self.inputTextView.isEditable = false
         }
-
     }
 
     override func viewWillDisappear() {
@@ -121,13 +118,16 @@ class ViewController: NSViewController {
     func log(message: String) {
         let timestamp = NSDate().timeIntervalSince1970
         let message = "[\(timestamp)]: \(message)\n"
-        let outputString: String
-        if let string = self.outputTextView.string {
-            outputString = string + message
-        } else {
-            outputString = message
+
+        DispatchQueue.main.async {
+            let outputString: String
+            if let string = self.outputTextView.string {
+                outputString = string + message
+            } else {
+                outputString = message
+            }
+            self.outputTextView.string = outputString
         }
-        self.outputTextView.string = outputString
     }
 }
 
@@ -171,7 +171,6 @@ extension ViewController: SocketClientDelegateProtocol {
         }
 
         log(message: "error encountered while executing command:\n\(error)")
-
     }
 
     func connectionsOpened() {

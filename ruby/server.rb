@@ -37,8 +37,17 @@ module SwiftRubyRPC
 
     def execute_command(command: nil)
       CommandExecutor.execute(command: command, target_object: nil)
+      return '{"payload":{"status":"ready_for_next"}}'
+    rescue StandardError => e
+      exception_array = []
+      exception_array << "#{e.class}:"
+      exception_array << e.backtrace
 
-      return '{"payload":{"status": "ready_for_next"}}'
+      while e.respond_to?("cause") && (e = e.cause)
+        exception_array << "cause: #{e.class}"
+        exception_array << backtrace
+      end
+      return "{\"payload\":{\"status\":\"failure\",\"failure_information\":#{exception_array.flatten}}}"
     end
   end
 end

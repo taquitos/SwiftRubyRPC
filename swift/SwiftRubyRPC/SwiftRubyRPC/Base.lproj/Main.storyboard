@@ -765,7 +765,7 @@
                                 </scroller>
                             </scrollView>
                             <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVt-Ro-zO5" userLabel="Output Bordered Scroll View">
-                                <rect key="frame" x="20" y="20" width="598" height="212"/>
+                                <rect key="frame" x="20" y="20" width="613" height="212"/>
                                 <clipView key="contentView" id="bMa-Q2-dFA">
                                     <rect key="frame" x="1" y="1" width="596" height="210"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -786,7 +786,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="iwN-H6-g0R">
-                                    <rect key="frame" x="581" y="1" width="16" height="210"/>
+                                    <rect key="frame" x="597" y="1" width="15" height="210"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
