@@ -21,7 +21,7 @@ module SwiftRubyRPC
           target_object = command.target_class
         end
 
-        target_object.public_send(method_name, *transformed_arg_list)
+        return target_object.public_send(method_name, *transformed_arg_list)
       end
     end
   end

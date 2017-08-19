@@ -36,7 +36,9 @@ module SwiftRubyRPC
     end
 
     def execute_command(command: nil)
-      CommandExecutor.execute(command: command, target_object: nil)
+      return_object = CommandExecutor.execute(command: command, target_object: nil)
+      ## probably need to just return Strings, or ready_for_next with object isn't String
+      print "if we returned an object, it would return:#{return_object}\n"
       return '{"payload":{"status":"ready_for_next"}}'
     rescue StandardError => e
       exception_array = []
