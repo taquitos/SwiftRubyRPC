@@ -9,6 +9,8 @@
 import Cocoa
 
 class ViewController: NSViewController {
+    fileprivate var returnValue: String? // lol, so safe
+
     enum CommandUIState {
         case disconnected
         case ready
@@ -162,15 +164,20 @@ extension ViewController {
 }
 
 extension ViewController: SocketClientDelegateProtocol {
-    func commandExecuted(error: SocketClientError?) {
+    func commandExecuted(serverResponse: SocketClientResponse) {
         prepareUI(state: .ready)
 
-        guard let error = error else {
-            log(message: "command executed")
-            return
-        }
+        switch serverResponse {
+        case .success(let returnedObject):
+            verbose(message: "command executed")
+            self.returnValue = returnedObject
 
-        log(message: "error encountered while executing command:\n\(error)")
+        case .alreadyClosedSockets, .connectionFailure, .malformedRequest, .malformedResponse, .serverError:
+            log(message: "error encountered while executing command:\n\(serverResponse)")
+
+        case .commandTimeout(let timeout):
+            log(message: "Runner timed out after \(timeout) second(s)")
+        }
     }
 
     func connectionsOpened() {

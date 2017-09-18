@@ -26,6 +26,7 @@
 		D52785131F353D2000770098 /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52785111F353D2000770098 /* Commands.swift */; };
 		D52785151F353D4200770098 /* CommandFileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52785141F353D4200770098 /* CommandFileProtocol.swift */; };
 		D52785161F353D4200770098 /* CommandFileProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52785141F353D4200770098 /* CommandFileProtocol.swift */; };
+		D5901E881F70712F00ADEEEB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5901E871F70712F00ADEEEB /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D527850E1F353CAF00770098 /* RubyCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RubyCommand.swift; sourceTree = "<group>"; };
 		D52785111F353D2000770098 /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		D52785141F353D4200770098 /* CommandFileProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandFileProtocol.swift; sourceTree = "<group>"; };
+		D5901E871F70712F00ADEEEB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				D52785141F353D4200770098 /* CommandFileProtocol.swift */,
 				D52785111F353D2000770098 /* Commands.swift */,
 				D527850B1F35375100770098 /* EnvironmentVariables.swift */,
+				D5901E871F70712F00ADEEEB /* Logger.swift */,
 				D527850E1F353CAF00770098 /* RubyCommand.swift */,
 				B3ABFE4D1F2E86C7001DBF83 /* SocketClient.swift */,
 				B3FD25891F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift */,
@@ -236,6 +239,7 @@
 				B3FD258A1F3FC7B50013EBB7 /* SocketClientDelegateProtocol.swift in Sources */,
 				D52785151F353D4200770098 /* CommandFileProtocol.swift in Sources */,
 				D52785121F353D2000770098 /* Commands.swift in Sources */,
+				D5901E881F70712F00ADEEEB /* Logger.swift in Sources */,
 				D527850C1F35375100770098 /* EnvironmentVariables.swift in Sources */,
 				B3ABFE331F2E86B4001DBF83 /* ViewController.swift in Sources */,
 				B3ABFE311F2E86B4001DBF83 /* AppDelegate.swift in Sources */,

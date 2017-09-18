@@ -3,10 +3,17 @@ require './command_executor.rb'
 require 'socket'
 
 module SwiftRubyRPC
-  class Server
+  class SocketServer
+    attr_accessor :command_executor
+
+    def initialize(command_executor: nil)
+      @command_executor = command_executor
+    end
+
     def start
       server = TCPServer.open('localhost', 2000) # Socket to listen on port 2000
       print "Accepting connections\n"
+
       client = server.accept # Wait for a client to connect
       print "Client connected\n"
 
@@ -36,10 +43,10 @@ module SwiftRubyRPC
     end
 
     def execute_command(command: nil)
-      return_object = CommandExecutor.execute(command: command, target_object: nil)
+      return_object = @command_executor.execute(command: command, target_object: nil)
       ## probably need to just return Strings, or ready_for_next with object isn't String
-      print "if we returned an object, it would return:#{return_object}\n"
-      return '{"payload":{"status":"ready_for_next"}}'
+      print "returning: #{return_object}\n"
+      return '{"payload":{"status":"ready_for_next", "return_object":"' + return_object.to_s + '"}}'
     rescue StandardError => e
       exception_array = []
       exception_array << "#{e.class}:"
@@ -54,6 +61,6 @@ module SwiftRubyRPC
   end
 end
 
-server = SwiftRubyRPC::Server.new
+server = SwiftRubyRPC::SocketServer.new(command_executor: SwiftRubyRPC::GenericCommandExecuter.new)
 
 server.start
